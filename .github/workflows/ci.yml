@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       PHONE: '0999998'
+    environment: development
     steps:
       - run: echo "Hello ${{github.actor}} ${{env.PHONE}}"
       - run: echo "Hello ${{env.COMPANY_NAME}}"
@@ -24,6 +25,8 @@ jobs:
       - run: echo ${{secrets.API_KEY}}
   job-2:
     runs-on: ubuntu-latest
+    environment: production
     steps:
       - run: echo "Hello ${{env.COMPANY_NAME}}"
       - run: echo ${{env.SERVER_IP}}
+      - run: echo ${{vars.SERVER_IP_PRODUCTION}}
